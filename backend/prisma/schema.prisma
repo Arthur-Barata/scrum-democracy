@@ -44,8 +44,8 @@ model Story {
   id          String   @id @default(uuid())
   title       String
   description String?
-  room        Room     @relation(fields: [roomId], references: [id])
   roomId      String
+  room        Room     @relation(fields: [roomId], references: [id])
   votes       Vote[]
   points      Int?     @default(0)
   createdAt   DateTime @default(now())
