@@ -1,7 +1,7 @@
 import express, { Router } from "express";
 import http from "http";
 import { Server } from "socket.io";
-import { SocketInitializer } from "./modules/socket";
+import { SocketInitializer } from "./modules/socket/init";
 import { UserController } from "./modules/user/application/controller/user.controller";
 
 const app = express();
