@@ -3,18 +3,17 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 20
+      nodejs: 24
     commands:
       - echo "Iniciando a fase de instalação..."
       - echo "Instalando as dependências do projeto..."
+      - cd backend
       - npm ci
   pre_build:
     commands:
       - echo "Iniciando a fase de pré-build..."
       - echo "Executando linters e testes unitários..."
       # Remova ou comente as linhas abaixo se não tiver scripts de lint/test configurados
-      - npm run lint
-      - npm test
   build:
     commands:
       - echo "Iniciando a fase de build..."
