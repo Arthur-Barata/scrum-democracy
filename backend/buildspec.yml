@@ -1,0 +1,37 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+    commands:
+      - echo "Iniciando a fase de instalação..."
+      - echo "Instalando as dependências do projeto..."
+      - npm ci
+  pre_build:
+    commands:
+      - echo "Iniciando a fase de pré-build..."
+      - echo "Executando linters e testes unitários..."
+      # Remova ou comente as linhas abaixo se não tiver scripts de lint/test configurados
+      - npm run lint
+      - npm test
+  build:
+    commands:
+      - echo "Iniciando a fase de build..."
+      - echo "Construindo a aplicação..."
+      # Substitua pelo comando de build do seu projeto (ex: tsc, webpack, vite, etc.)
+      - npm run build
+  post_build:
+    commands:
+      - echo "Fase de build concluída com sucesso em `date`"
+
+artifacts:
+  files:
+    - '**/*'
+  # Especifique a pasta onde os arquivos compilados foram gerados (ex: 'dist', 'build', '.next')
+  base-directory: 'dist' 
+  name: meu-projeto-node-$(date +%Y-%m-%d)
+
+cache:
+  paths:
+    - 'node_modules/**/*'
